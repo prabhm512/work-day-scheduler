@@ -6,14 +6,14 @@ $(document).ready(function() {
 
   // Dynamically generate new Time Blocks
 
-var newDiv, newHour, newRow, newTextArea;
+var newDiv, newHour, newRow, newTextArea, newButton;
 
 var descArray = [];
 
 function newRows() {
   
   for (i=0; i<=9; i++) {
-    var time = i+8;
+    var time = i+16;
     var storedSchedule = JSON.parse(localStorage.getItem("descArray"));
 
       // Clears from next time block from previous so that they can be show linearly
@@ -38,7 +38,7 @@ function newRows() {
       newButton = $('<button>');
       newButton.addClass('saveBtn');
       newButton.attr("id", "button-" + i)
-      newButton.append("🔒");
+    //   newButton.append("✔");
       newDiv.append(newButton);
       
       // Time block appended to HTML
@@ -58,23 +58,55 @@ function newRows() {
 }
 newRows();
 
-  // Entered schedule gets stored on clicking save button
+  // Entered schedule gets stored when text is changed
 
   for (let i=0; i<descArray.length; i++) {
 
-    $("#button-"+i).on("click", function() {
+    // $("#button-"+i).on("click", function() {
+            
+            $("#text-"+i).change(function() {
+                descArray.splice(i, 1, $("#text-"+i).val());
 
-            var isValDiff = $("#text-"+i).change();
+                if ($("#text-"+i).val() === "") {
+                    $("#button-"+i).text("");
+                    $("#button-"+i).append("✔");
+                }
 
-            if (isValDiff) {
-                descArray.splice(i, 1, $("#text-"+i).val());    
-            }
+                else {
+                    $("#button-"+i).text("");
+                    $("#button-"+i).append("⌛");
+                }
 
-        localStorage.setItem("descArray", JSON.stringify(descArray));
-        console.log(descArray);
-    })
+
+                localStorage.setItem("descArray", JSON.stringify(descArray));
+            });
+
+        //     if (isValDiff) {  
+        //         descArray.splice(i, 1, $("#text-"+i).val());
+        //     }
+
+        // localStorage.setItem("descArray", JSON.stringify(descArray));
+        // newButton.append("");
+    // })
   }
 
-  // Background colour changes based on   
+  // Change background colour based on current time
+  
+  function timeBlockColour() {
+
+    for (i=0; i<descArray.length; i++) {
+        if (parseInt($("#index-"+i +" > .hour").text()) === parseInt(moment().hour())) {
+            $("#index-"+i+ " > .row").attr("style", "background-color: lightgreen;");
+        } 
+
+        if (parseInt($("#index-"+i +" > .hour").text()) < parseInt(moment().hour())){
+            $("#index-"+i+ " > .row").attr("style", "background-color: #d3d3d3;");
+        }
+    }
+
+  }
+
+  timeBlockColour();
+
   // Previous days schedule is emptied once day changes
 })

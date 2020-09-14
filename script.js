@@ -58,7 +58,7 @@ function newRows() {
 
       if (storedStatus !== null) {
           status[i] = storedStatus[i];
-          $("#button-"+i).val(status[i]);
+          $("#block-"+i).text(status[i]);
       }
 
       else {
@@ -110,8 +110,6 @@ newRows();
   }
 
   timeBlockColour();
-
-  // Go to next time block on key down event
 
 
   // Previous days schedule is emptied once day changes

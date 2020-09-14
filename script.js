@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   // Dynamically generate new Time Blocks
 
-var newDiv, newHour, newRow, newTextArea, newButton;
+var newDiv, newHour, newRow, newTextArea, newBlock;
 
 var descArray = [];
 var status = [];
@@ -37,11 +37,11 @@ function newRows() {
       newDiv.append(newRow);
 
       // New save button created
-      newButton = $('<section>');
-      newButton.addClass('status');
-      newButton.attr("id", "block-" + i)
-    //   newButton.append("✔");
-      newDiv.append(newButton);
+      newBlock = $('<section>');
+      newBlock.addClass('status');
+      newBlock.attr("id", "block-" + i)
+      newBlock.append("✔");
+      newDiv.append(newBlock);
       
       // Time block appended to HTML
       $('.container').append(newDiv);
@@ -78,7 +78,6 @@ newRows();
 
                 if ($("#text-"+i).val() === "") {
                     status.splice(i, 1, "✔");
-                    
                 }
 
                 else {

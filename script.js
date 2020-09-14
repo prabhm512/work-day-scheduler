@@ -9,12 +9,14 @@ $(document).ready(function() {
 var newDiv, newHour, newRow, newTextArea, newButton;
 
 var descArray = [];
+var status = [];
 
 function newRows() {
   
   for (i=0; i<=9; i++) {
     var time = i+16;
     var storedSchedule = JSON.parse(localStorage.getItem("descArray"));
+    var storedStatus = JSON.parse(localStorage.getItem("status"));
 
       // Clears from next time block from previous so that they can be show linearly
       newDiv = $('<div>');
@@ -53,6 +55,15 @@ function newRows() {
       else {
           descArray[i] = $("#text-"+i).val();
       }
+
+      if (storedStatus !== null) {
+          status[i] = storedStatus[i];
+          $("#button-"+i).val(status[i]);
+      }
+
+      else {
+          status[i] = $("#block-"+i).text();
+      }
   }
   
 }
@@ -66,17 +77,18 @@ newRows();
                 descArray.splice(i, 1, $("#text-"+i).val());
 
                 if ($("#text-"+i).val() === "") {
-                    $("#block-"+i).text("");
-                    $("#block-"+i).append("✔");
+                    status.splice(i, 1, "✔");
+                    
                 }
 
                 else {
-                    $("#block-"+i).text("");
-                    $("#block-"+i).append("⌛");
+                    status.splice(i, 1, "⌛");
                 }
 
+                $("#block-"+i).text(status[i]);
 
                 localStorage.setItem("descArray", JSON.stringify(descArray));
+                localStorage.setItem("status", JSON.stringify(status));
             });
 
     }
@@ -98,6 +110,9 @@ newRows();
   }
 
   timeBlockColour();
+
+  // Go to next time block on key down event
+
 
   // Previous days schedule is emptied once day changes
 })

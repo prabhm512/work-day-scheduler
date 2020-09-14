@@ -35,9 +35,9 @@ function newRows() {
       newDiv.append(newRow);
 
       // New save button created
-      newButton = $('<button>');
-      newButton.addClass('saveBtn');
-      newButton.attr("id", "button-" + i)
+      newButton = $('<section>');
+      newButton.addClass('status');
+      newButton.attr("id", "block-" + i)
     //   newButton.append("✔");
       newDiv.append(newButton);
       
@@ -62,33 +62,24 @@ newRows();
 
   for (let i=0; i<descArray.length; i++) {
 
-    // $("#button-"+i).on("click", function() {
-            
             $("#text-"+i).change(function() {
                 descArray.splice(i, 1, $("#text-"+i).val());
 
                 if ($("#text-"+i).val() === "") {
-                    $("#button-"+i).text("");
-                    $("#button-"+i).append("✔");
+                    $("#block-"+i).text("");
+                    $("#block-"+i).append("✔");
                 }
 
                 else {
-                    $("#button-"+i).text("");
-                    $("#button-"+i).append("⌛");
+                    $("#block-"+i).text("");
+                    $("#block-"+i).append("⌛");
                 }
 
 
                 localStorage.setItem("descArray", JSON.stringify(descArray));
             });
 
-        //     if (isValDiff) {  
-        //         descArray.splice(i, 1, $("#text-"+i).val());
-        //     }
-
-        // localStorage.setItem("descArray", JSON.stringify(descArray));
-        // newButton.append("");
-    // })
-  }
+    }
 
   // Change background colour based on current time
   

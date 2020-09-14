@@ -43,13 +43,14 @@ textarea{
   
 }
 
-.saveBtn {
+.status {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
   text-align: center;
+  padding-top: 29px;
   border-radius: 15px;
   float: left;
   width: 8%;
@@ -58,7 +59,7 @@ textarea{
   border-left: 1px solid black;
 }
 
-.saveBtn i:hover {
+.status i:hover {
   transition: all .3s ease-in-out;
 }
 

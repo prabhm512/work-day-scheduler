@@ -94,22 +94,30 @@ newRows();
 
   // Change background colour based on current time
   
-  function timeBlockColour() {
+  
+
+  function timeBlockColor() {
+    
+    // reload page every hour so that green background moves down to next time block
+    if (moment().minute() === 00) {
+      
+      location.reload();
+    }
 
     for (i=0; i<descArray.length; i++) {
-        if (parseInt($("#index-"+i +" > .hour").text()) === parseInt(moment().hour())) {
-            $("#index-"+i+ " > .row").attr("style", "background-color: lightgreen;");
-        } 
+      if (parseInt($("#index-"+i +" > .hour").text()) === parseInt(moment().hour())) {
+          $("#index-"+i+ " > .row").attr("style", "background-color: lightgreen;");
+      } 
 
-        if (parseInt($("#index-"+i +" > .hour").text()) < parseInt(moment().hour())){
-            $("#index-"+i+ " > .row").attr("style", "background-color: #d3d3d3;");
-        }
+      if (parseInt($("#index-"+i +" > .hour").text()) < parseInt(moment().hour())){
+          $("#index-"+i+ " > .row").attr("style", "background-color: #d3d3d3;");
+      }
     }
 
   }
 
-  timeBlockColour();
+  // Call function every minute
+  setInterval(timeBlockColor, 60000);
 
 
-  // Previous days schedule is emptied once day changes
-})
+});

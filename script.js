@@ -116,8 +116,8 @@ newRows();
 
   }
 
-  // Call function every minute
-  setInterval(timeBlockColor, 60000);
+  // Call function every second
+  setInterval(timeBlockColor, 6000);
 
 
 });

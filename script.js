@@ -14,7 +14,7 @@ var status = [];
 function newRows() {
   
   for (i=0; i<=9; i++) {
-    var time = i+16;
+    var time = i+8;
     var storedSchedule = JSON.parse(localStorage.getItem("descArray"));
     var storedStatus = JSON.parse(localStorage.getItem("status"));
 

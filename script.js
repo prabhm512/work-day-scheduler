@@ -14,7 +14,7 @@ var status = [];
 function newRows() {
   
   for (i=0; i<=9; i++) {
-    var time = i+8;
+    var time = i+16;
     var storedSchedule = JSON.parse(localStorage.getItem("descArray"));
     var storedStatus = JSON.parse(localStorage.getItem("status"));
 
@@ -99,7 +99,7 @@ newRows();
   function timeBlockColor() {
     
     // reload page every hour so that green background moves down to next time block
-    if (moment().minute() === 00) {
+    if (moment().minute() === 00 && moment().second() === 00) {
       
       location.reload();
     }
@@ -117,7 +117,6 @@ newRows();
   }
 
   // Call function every second
-  setInterval(timeBlockColor, 6000);
-
+  setInterval(timeBlockColor, 1000);
 
 });

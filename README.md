@@ -1,6 +1,6 @@
 # Work Day Scheduler
 
-## User Story 
+## User Story
 
 AS AN employee with a busy schedule
 I WANT to add important events to a daily planner
@@ -8,7 +8,7 @@ SO THAT I can manage my time effectively
 
 ## Description
 
-This application allows hour-wise work day schedules to be displayed on an easy-to-access, intuitive, user-friendly interface. 
+This application allows hour-wise work day schedules to be displayed on an easy-to-access, intuitive, user-friendly interface.
 
 1 "time-block" = 1 hour
 
@@ -18,19 +18,19 @@ This application allows hour-wise work day schedules to be displayed on an easy-
 - Tasks are saved locally.
 - Mobile-responsive.
 
-## Tools and Technologies 
+## Tools and Technologies
 
-- jQuery 
+- jQuery
 - JavaScript
 - HTML/CSS
 - Bootstrap
 
 ## Visuals
 
+<img src="images/workday-scheduler.png">
+
 ## Project Status
 
 Ongoing. Multiple feature additions can be done.
 
 ## <a href="https://prabhm512.github.io/work-day-scheduler/">Deployed Project (click to view)</a>
-
-
